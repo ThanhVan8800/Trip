@@ -129,7 +129,7 @@ class HomeScreen extends StatelessWidget{
                                 shape: StadiumBorder(),
                                 onPrimary: Colors.white,
                               ),
-                              child: Image.asset('asset/img/gmail.png'),
+                              child: Image.asset('assets/img/gmail.png'),
                               onPressed: () async{
                                 const url = 
                                   'mailto:0306191076@caothang.edu.vn@gmail.com?subject=I am using your flutter project so';
@@ -154,9 +154,31 @@ class HomeScreen extends StatelessWidget{
                                 shape: StadiumBorder(),
                                 onPrimary: Colors.white,
                               ),
-                              child: Image.asset('asset/img/whatsapp.png'),
+                              child: Image.asset('assets/img/telegram.png'),
                               onPressed: () async{
                                 const url = '';
+                                if (await canLaunch(url)) {
+                                  await launch(url);
+                                } else {
+                                  throw 'Could not launch $url';
+                                }
+                              },
+                            ),
+                          ),
+                        ),
+                        FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: SizedBox(
+                            height: h,
+                            width: w,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                shape: StadiumBorder(),
+                                onPrimary: Colors.white,
+                              ),
+                              child: Image.asset('assets/img/instagram.png'),
+                              onPressed: () async{
+                                const url = 'https://www.instagram.com/vthanh.25/';
                                 if (await canLaunch(url)) {
                                   await launch(url);
                                 } else {
@@ -523,7 +545,7 @@ var homeDown = Column(
 );
 List<_City> cities = [
   _City(
-    image: "assets/images/Kerman.png",
+    image: "assets/img/vungtau.png",
     name: "Vũng tàu",
     monthyear: "Far 2022",
     oldprice: "25850000",
@@ -531,7 +553,7 @@ List<_City> cities = [
     discount: "58",
   ),
   _City(
-    image: "assets/images/Mashhad.png",
+    image: "assets/img/phongnha.png",
     name: "Phú Quốc",
     monthyear: "Far 2022",
     oldprice: "258500",
@@ -539,7 +561,7 @@ List<_City> cities = [
     discount: "58",
   ),
   _City(
-    image: "assets/images/Tehran.png",
+    image: "assets/img/vungtau.png",
     name: "Tân Thành Beach",
     monthyear: "Far 2022",
     oldprice: "25850000",

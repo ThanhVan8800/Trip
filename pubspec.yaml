@@ -70,6 +70,11 @@ flutter:
     - assets/img/gmail.png
     - assets/img/instagram.png
     - assets/img/telegram.png
+    - assets/img/fb.png
+    - assets/img/ins.png
+    - assets/img/vungtau.png
+    - assets/img/Kerman.png
+    - assets/img/phongnha.png
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
