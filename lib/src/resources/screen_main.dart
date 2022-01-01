@@ -524,26 +524,26 @@ var homeDown = Column(
 List<_City> cities = [
   _City(
     image: "assets/images/Kerman.png",
-    name: "Kerman",
-    monthyear: "Far 1399",
-    oldprice: "258500",
-    newprice: "150000",
+    name: "Vũng tàu",
+    monthyear: "Far 2022",
+    oldprice: "25850000",
+    newprice: "15000000",
     discount: "58",
   ),
   _City(
     image: "assets/images/Mashhad.png",
-    name: "Mashhad",
-    monthyear: "Far 1399",
+    name: "Phú Quốc",
+    monthyear: "Far 2022",
     oldprice: "258500",
-    newprice: "150000",
+    newprice: "15000000",
     discount: "58",
   ),
   _City(
     image: "assets/images/Tehran.png",
-    name: "Tehran",
-    monthyear: "Far 1399",
-    oldprice: "258500",
-    newprice: "150000",
+    name: "Tân Thành Beach",
+    monthyear: "Far 2022",
+    oldprice: "25850000",
+    newprice: "15000000",
     discount: "58",
   ),
 ];
@@ -649,18 +649,18 @@ class _City extends StatelessWidget{
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Text("\$ " + '${(newprice)}',
+            Text(  '${(newprice)}' + "\VNĐ ",
                 style: TextStyle(
                     color: Colors.black,
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w400,
                     fontStyle: FontStyle.italic)),
             SizedBox(
               width: width! * 0.08,
             ),
-            Text("\$ " + '${(oldprice)}',
+            Text( '${(oldprice)}' + "\VNĐ " ,
                 style: TextStyle(
                     color: Colors.black87,
-                    fontWeight: FontWeight.w400,
+                    fontWeight: FontWeight.bold,
                     fontStyle: FontStyle.italic)),
           ],
         )
