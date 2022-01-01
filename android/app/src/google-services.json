@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "836196315351",
+    "project_id": "sbtctrip",
+    "storage_bucket": "sbtctrip.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:836196315351:android:528ea47af35fcfb3bdc092",
+        "android_client_info": {
+          "package_name": "com.example.sbtc_trip"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "836196315351-cnn7269gfmuon772fm8slhggolvfdq72.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCi0kTWYXFTAjb4LAji-F5kklNr8XPhTYg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "836196315351-cnn7269gfmuon772fm8slhggolvfdq72.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
