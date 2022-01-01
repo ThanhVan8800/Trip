@@ -20,12 +20,14 @@ class GiaoDien1State extends State<GiaoDien1> {
     precacheImage(img_bg, context);
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.white,
           title: Text(
             'App StripCase',
             style: TextStyle(
-              color: Colors.black,
-              fontSize: 30,
-            ),
+                color: Colors.blue,
+                fontSize: 30,
+                letterSpacing: 5,
+                fontFamily: "DancingScript"),
           ),
           centerTitle: true,
         ),
@@ -51,7 +53,10 @@ class GiaoDien1State extends State<GiaoDien1> {
                   ),
                   child: Text(
                     'Đăng Nhập',
-                    style: TextStyle(fontSize: 28),
+                    style: TextStyle(
+                      fontSize: 28,
+                      fontFamily: "DancingScript",
+                    ),
                   ),
                 ),
               ),
@@ -69,7 +74,10 @@ class GiaoDien1State extends State<GiaoDien1> {
                   ),
                   child: Text(
                     'Đăng Ký',
-                    style: TextStyle(fontSize: 28),
+                    style: TextStyle(
+                      fontSize: 28,
+                      fontFamily: "DancingScript",
+                    ),
                   ),
                 ),
               ),
