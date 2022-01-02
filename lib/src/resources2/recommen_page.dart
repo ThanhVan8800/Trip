@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:sbtc_trip/src/resources/login_page.dart';
+import 'package:sbtc_trip/src/resources/screen_main.dart';
 import 'package:cached_network_image_web/cached_network_image_web.dart';
 
-class DangKy extends StatefulWidget {
-  const DangKy({Key? key}) : super(key: key);
+class recommen extends StatefulWidget {
+  const recommen({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return DangKyState();
+    return recommenState();
   }
 }
 
@@ -16,14 +16,14 @@ final TextEditingController _passController = TextEditingController();
 
 var img_bg = AssetImage('assets/img/h3.jpg');
 
-class DangKyState extends State<DangKy> {
+class recommenState extends State<recommen> {
   @override
   Widget build(BuildContext context) {
     precacheImage(img_bg, context);
     return Scaffold(
         appBar: AppBar(
           title: Text(
-            'Đăng Ký Tài Khoản',
+            'Đề Xuất Địa Danh Mới',
             style: TextStyle(
               color: Colors.black,
               fontSize: 30,
@@ -44,15 +44,7 @@ class DangKyState extends State<DangKy> {
                 padding: EdgeInsets.all(15),
                 child: TextField(
                   decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Nhập tên tài khoản'),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.all(15),
-                child: TextField(
-                  decoration: InputDecoration(
-                      border: OutlineInputBorder(), labelText: 'Nhập mật khẩu'),
+                      border: OutlineInputBorder(), labelText: 'Tên Địa Danh'),
                 ),
               ),
               Padding(
@@ -60,7 +52,21 @@ class DangKyState extends State<DangKy> {
                 child: TextField(
                   decoration: InputDecoration(
                       border: OutlineInputBorder(),
-                      labelText: 'Nhập lại mật khẩu'),
+                      labelText: 'Địa chỉ Địa Danh'),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(15),
+                child: TextField(
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(), labelText: 'Kinh Độ'),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(15),
+                child: TextField(
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(), labelText: 'Vĩ Độ'),
                 ),
               ),
               Padding(
@@ -68,7 +74,15 @@ class DangKyState extends State<DangKy> {
                 child: TextField(
                   decoration: InputDecoration(
                       border: OutlineInputBorder(),
-                      labelText: 'Nhập Số Điện Thoại'),
+                      labelText: 'Thông Tin Địa danh'),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(15),
+                child: TextField(
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Hình Ảnh Địa Danh'),
                 ),
               ),
               Padding(
@@ -76,7 +90,7 @@ class DangKyState extends State<DangKy> {
                 child: OutlinedButton(
                   onPressed: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => LoginPage()));
+                        MaterialPageRoute(builder: (context) => BottomNav()));
                   },
                   style: OutlinedButton.styleFrom(
                     elevation: 8,
@@ -84,7 +98,7 @@ class DangKyState extends State<DangKy> {
                     side: BorderSide(color: Colors.blue),
                   ),
                   child: Text(
-                    'Đăng Ký',
+                    'Đề Xuất Địa Danh',
                     style: TextStyle(fontSize: 28),
                   ),
                 ),

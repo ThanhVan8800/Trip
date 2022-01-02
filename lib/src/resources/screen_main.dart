@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sbtc_trip/src/resources/login_page.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:sbtc_trip/src/resources2/recommendation_page.dart';
+import 'package:sbtc_trip/src/resources2/article_list_page.dart';
+import 'package:sbtc_trip/src/resources2/recommen_page.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -373,12 +374,13 @@ class _HomeTop extends State<HomeTop> {
                     InkWell(
                       child: Choice88(
                           icon: Icons.hotel,
-                          text: "Khách sạn",
+                          text: "Đề Xuất địa danh",
                           selected: isFlightselected),
                       onTap: () {
-                        setState(() {
-                          // isFlightselected = false;
-                        });
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => recommen()));
                       },
                     ),
                     SizedBox(

@@ -114,7 +114,10 @@ class detailed_articleState extends State<detailed_article> {
       body: Center(
           child: Column(
         children: [
-          Text('Mộng Bờ Tây'),
+          Text(
+            'Mộng Bờ Tây',
+            style: TextStyle(),
+          ),
         ],
       )),
     );
