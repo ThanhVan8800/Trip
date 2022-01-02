@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sbtc_trip/src/resources/login_page.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:sbtc_trip/src/resources2/recommendation_page.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -36,16 +37,18 @@ class _BottomNavState extends State<BottomNav> {
           color: Colors.black,
         ),
         label: "Explore"));
-    items.add(BottomNavigationBarItem(
-        activeIcon: Icon(
-          Icons.favorite,
-          color: appTheme.primaryColor,
-        ),
-        icon: Icon(
-          Icons.favorite,
-          color: Colors.black,
-        ),
-        label: "WishList"));
+    items.add(
+      BottomNavigationBarItem(
+          activeIcon: Icon(
+            Icons.favorite,
+            color: appTheme.primaryColor,
+          ),
+          icon: Icon(
+            Icons.favorite,
+            color: Colors.black,
+          ),
+          label: "WishList"),
+    );
     items.add(BottomNavigationBarItem(
         activeIcon: Icon(
           Icons.local_offer,
@@ -355,12 +358,13 @@ class _HomeTop extends State<HomeTop> {
                     InkWell(
                       child: Choice88(
                           icon: Icons.flight_takeoff,
-                          text: "Chuyến bay",
+                          text: "Danh Sach Bai Viet",
                           selected: isFlightselected),
                       onTap: () {
-                        setState(() {
-                          // isFlightselected = true;
-                        });
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => recommendation()));
                       },
                     ),
                     SizedBox(
@@ -527,7 +531,7 @@ var homeDown = Column(
         itemCount: cities.length,
         scrollDirection: Axis.horizontal,
       ),
-    )
+    ),
   ],
 );
 List<_City> cities = [

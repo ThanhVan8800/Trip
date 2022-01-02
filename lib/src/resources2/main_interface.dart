@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sbtc_trip/src/resources/dangky.dart';
+import 'package:sbtc_trip/src/resources2/registration.dart';
 import 'package:sbtc_trip/src/resources/login_page.dart';
 import 'package:cached_network_image_web/cached_network_image_web.dart';
 
