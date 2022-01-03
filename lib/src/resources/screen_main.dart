@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:sbtc_trip/src/resources/login_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:sbtc_trip/src/resources/personal_page.dart';
+import 'package:sbtc_trip/src/resources2/recommen_page.dart';
+import 'package:sbtc_trip/src/resources2/registration.dart';
+import 'package:sbtc_trip/src/resources2/article_list_page.dart';
 void main(){
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     theme: appTheme,
     title: "Màn hình chính",
-  )
-  );
+  ));
 }
 
 
@@ -21,13 +23,12 @@ double? width;
 double? height;
 final bodies = [HomeScreen(),PersonalPage()];
 
-
-
 class BottomNav extends StatefulWidget {
   BottomNav({Key? key}) : super(key: key);
 
   _BottomNavState createState() => _BottomNavState();
 }
+
 class _BottomNavState extends State<BottomNav> {
   List<BottomNavigationBarItem> createItems() {
     List<BottomNavigationBarItem> items = [];
@@ -77,48 +78,47 @@ class _BottomNavState extends State<BottomNav> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: bodies.elementAt(sel),
-        bottomNavigationBar: BottomNavigationBar(
-          items: createItems(),
-          unselectedItemColor: Colors.black,
-          selectedItemColor: appTheme.primaryColor,
-          type: BottomNavigationBarType.shifting,
-          showUnselectedLabels: false,
-          showSelectedLabels: true,
-          currentIndex: sel,
-          elevation: 1.5,
-          onTap: (int index) {
-            if (index != sel)
-              setState(() {
-                sel = index;
-              });
-          },
-        ),
+      body: bodies.elementAt(sel),
+      bottomNavigationBar: BottomNavigationBar(
+        items: createItems(),
+        unselectedItemColor: Colors.black,
+        selectedItemColor: appTheme.primaryColor,
+        type: BottomNavigationBarType.shifting,
+        showUnselectedLabels: false,
+        showSelectedLabels: true,
+        currentIndex: sel,
+        elevation: 1.5,
+        onTap: (int index) {
+          if (index != sel)
+            setState(() {
+              sel = index;
+            });
+        },
+      ),
     );
   }
 }
 
-class HomeScreen extends StatelessWidget{
+class HomeScreen extends StatelessWidget {
   @override
-  
-
   Widget build(BuildContext context) {
     width = MediaQuery.of(context).size.shortestSide;
     height = MediaQuery.of(context).size.longestSide;
     double h = 50;
-    double w = 50;  
+    double w = 50;
     return Scaffold(
         floatingActionButton: FloatingActionButton(
           elevation: 0,
           hoverElevation: 0,
-          onPressed: (){
-            showDialog(context: context,
-                builder: (context) {
-                  return AlertDialog(
-                  title:Text("Thông tin liên quan:"),
-                  content: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
+          onPressed: () {
+            showDialog(
+              context: context,
+              builder: (context) {
+                return AlertDialog(
+                    title: Text("Thông tin liên quan:"),
+                    content: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
                         FittedBox(
                           fit: BoxFit.scaleDown,
                           child: SizedBox(
@@ -130,16 +130,14 @@ class HomeScreen extends StatelessWidget{
                                 onPrimary: Colors.white,
                               ),
                               child: Image.asset('assets/img/gmail.png'),
-                              onPressed: () async{
-                                const url = 
-                                  'mailto:0306191076@caothang.edu.vn@gmail.com?subject=I am using your flutter project so';
-                                  if(await canLaunch(url)){
-                                    await launch(url);
-                                    } else{
-                                      throw 'Could not launch $url';
-                                    
-                                    }
-                                  
+                              onPressed: () async {
+                                const url =
+                                    'mailto:0306191076@caothang.edu.vn@gmail.com?subject=I am using your flutter project so';
+                                if (await canLaunch(url)) {
+                                  await launch(url);
+                                } else {
+                                  throw 'Could not launch $url';
+                                }
                               },
                             ),
                           ),
@@ -155,7 +153,7 @@ class HomeScreen extends StatelessWidget{
                                 onPrimary: Colors.white,
                               ),
                               child: Image.asset('assets/img/telegram.png'),
-                              onPressed: () async{
+                              onPressed: () async {
                                 const url = '';
                                 if (await canLaunch(url)) {
                                   await launch(url);
@@ -177,8 +175,9 @@ class HomeScreen extends StatelessWidget{
                                 onPrimary: Colors.white,
                               ),
                               child: Image.asset('assets/img/instagram.png'),
-                              onPressed: () async{
-                                const url = 'https://www.instagram.com/vthanh.25/';
+                              onPressed: () async {
+                                const url =
+                                    'https://www.instagram.com/vthanh.25/';
                                 if (await canLaunch(url)) {
                                   await launch(url);
                                 } else {
@@ -210,11 +209,10 @@ class HomeScreen extends StatelessWidget{
                             ),
                           ),
                         )
-                    ],
-                  )
-                  );
-                },
-             );
+                      ],
+                    ));
+              },
+            );
           },
           child: Icon(Icons.info_outline),
           backgroundColor: appTheme.primaryColor.withOpacity(.5),
@@ -222,24 +220,21 @@ class HomeScreen extends StatelessWidget{
         body: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Column(
-            children: <Widget>[
-              HomeTop(), homeDown, homeDown
-            ],
+            children: <Widget>[HomeTop(), homeDown, homeDown],
           ),
-        )
-    );
+        ));
   }
-
 }
+
 var selectedloc = 0;
 List<String> locs = ['Động Phong Nha', 'Gò Công Town'];
 
-class HomeTop extends StatefulWidget{
+class HomeTop extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _HomeTop();
-
 }
-class _HomeTop extends State<HomeTop>{
+
+class _HomeTop extends State<HomeTop> {
   var isFlightselected = true;
   TextEditingController c = TextEditingController(text: locs[1]);
   @override
@@ -388,12 +383,13 @@ class _HomeTop extends State<HomeTop>{
                     InkWell(
                       child: Choice88(
                           icon: Icons.flight_takeoff,
-                          text: "Chuyến bay",
+                          text: "Danh Sach Bai Viet",
                           selected: isFlightselected),
                       onTap: () {
-                        setState(() {
-                         // isFlightselected = true;
-                        });
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => recommendation()));
                       },
                     ),
                     SizedBox(
@@ -402,12 +398,13 @@ class _HomeTop extends State<HomeTop>{
                     InkWell(
                       child: Choice88(
                           icon: Icons.hotel,
-                          text: "Khách sạn",
+                          text: "Đề Xuất địa danh",
                           selected: isFlightselected),
                       onTap: () {
-                        setState(() {
-                         // isFlightselected = false;
-                        });
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => recommen()));
                       },
                     ),
                     SizedBox(
@@ -427,42 +424,39 @@ class _HomeTop extends State<HomeTop>{
                   ],
                 ),
                 SizedBox(height: height! * 0.0375),
-               
                 Row(
-                  
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: <Widget>[
-                    InkWell(
-                      child: Choice88(
-                          icon: Icons.flight_takeoff,
-                          text: "Chuyến bay",
-                          selected: isFlightselected),
-                      onTap: () {
-                        setState(() {
-                         // isFlightselected = true;
-                        });
-                      },
-                    ),
-                    SizedBox(
-                      width: width! * 0.055,
-                    ),
-                     InkWell(
-                      child: Choice88(
-                          icon: Icons.hotel,
-                          text: "Khách sạn",
-                          selected: isFlightselected),
-                      onTap: () {
-                        setState(() {
-                         // isFlightselected = false;
-                        });
-                      },
-                    ),
-                    SizedBox(
-                      width: width! * 0.055,
-                    ),
-                  ]
-                )
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                      InkWell(
+                        child: Choice88(
+                            icon: Icons.flight_takeoff,
+                            text: "Chuyến bay",
+                            selected: isFlightselected),
+                        onTap: () {
+                          setState(() {
+                            // isFlightselected = true;
+                          });
+                        },
+                      ),
+                      SizedBox(
+                        width: width! * 0.055,
+                      ),
+                      InkWell(
+                        child: Choice88(
+                            icon: Icons.hotel,
+                            text: "Khách sạn",
+                            selected: isFlightselected),
+                        onTap: () {
+                          setState(() {
+                            // isFlightselected = false;
+                          });
+                        },
+                      ),
+                      SizedBox(
+                        width: width! * 0.055,
+                      ),
+                    ])
               ],
             ),
           ),
@@ -470,15 +464,15 @@ class _HomeTop extends State<HomeTop>{
       ],
     );
   }
-
 }
-class Clipper08 extends CustomClipper<Path>{
+
+class Clipper08 extends CustomClipper<Path> {
   @override
-  Path getClip(Size size){
+  Path getClip(Size size) {
     final Path path = Path();
     path.lineTo(0.0, size.height);
-    var End = Offset(size.width/2, size.height - 30.0);
-    var Control = Offset(size.width/4, size.height - 50.0);
+    var End = Offset(size.width / 2, size.height - 30.0);
+    var Control = Offset(size.width / 4, size.height - 50.0);
     path.quadraticBezierTo(Control.dx, Control.dy, End.dx, End.dy);
     var End2 = Offset(size.width, size.height - 80.0);
     var Control2 = Offset(size.width * .75, size.height - 10.0);
@@ -487,57 +481,58 @@ class Clipper08 extends CustomClipper<Path>{
     path.close();
     return path;
   }
+
   @override
   bool shouldReclip(CustomClipper oldClipper) {
     return true;
   }
 }
-class Choice88 extends StatefulWidget{
+
+class Choice88 extends StatefulWidget {
   final IconData? icon;
   final String? text;
   final bool? selected;
   Choice88({this.icon, this.text, this.selected});
   @override
   State<StatefulWidget> createState() => _Choice88();
-
 }
-class _Choice88 extends State<Choice88> with SingleTickerProviderStateMixin{
+
+class _Choice88 extends State<Choice88> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: EdgeInsets.symmetric(horizontal: 18, vertical: 8),
-        decoration: widget.selected!
-        ? BoxDecoration(
-          color: Colors.white.withOpacity(.30),
-          borderRadius: BorderRadius.all(Radius.circular(20)),
-        )
-        :null,
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Icon(
-              widget.icon,
-              size: 20,
-              color: Colors.white,
-            ),
-            SizedBox(
-              width: width!* .025,
-            ),
-            Text(
-              widget.text!,
-              style: TextStyle(color: Colors.white, fontSize: 16),
+      padding: EdgeInsets.symmetric(horizontal: 18, vertical: 8),
+      decoration: widget.selected!
+          ? BoxDecoration(
+              color: Colors.white.withOpacity(.30),
+              borderRadius: BorderRadius.all(Radius.circular(20)),
             )
-          ],
-        ),
+          : null,
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Icon(
+            widget.icon,
+            size: 20,
+            color: Colors.white,
+          ),
+          SizedBox(
+            width: width! * .025,
+          ),
+          Text(
+            widget.text!,
+            style: TextStyle(color: Colors.white, fontSize: 16),
+          )
+        ],
+      ),
     );
   }
-
 }
-var viewallstyle = 
-    TextStyle(fontSize: 14, color: appTheme.primaryColor);
+
+var viewallstyle = TextStyle(fontSize: 14, color: appTheme.primaryColor);
 var homeDown = Column(
-  children:<Widget>[
+  children: <Widget>[
     Padding(
       padding: const EdgeInsets.all(8.0),
       child: Row(
@@ -554,15 +549,15 @@ var homeDown = Column(
       ),
     ),
     Container(
-      height: height!* .25 < 170 ? height!* .25 : 170,
+      height: height! * .25 < 170 ? height! * .25 : 170,
       child: ListView.builder(
         itemBuilder: (context, index) => cities[index],
         shrinkWrap: true,
         padding: EdgeInsets.all(0.0),
         itemCount: cities.length,
         scrollDirection: Axis.horizontal,
-        ),
-    )
+      ),
+    ),
   ],
 );
 List<_City> cities = [
@@ -591,7 +586,8 @@ List<_City> cities = [
     discount: "58",
   ),
 ];
-class _City extends StatelessWidget{
+
+class _City extends StatelessWidget {
   final String? image, monthyear, oldprice;
   final String? name, discount, newprice;
   const _City(
@@ -606,25 +602,23 @@ class _City extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: <Widget> [
+      children: <Widget>[
         ClipRRect(
-          borderRadius: BorderRadius.all(Radius.circular(20)),
-          child: Stack(
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 5),
-                child: Container(
-                  height: height! * .137 < 160 ? height! *.137 : 160,
-                  width: width! * .5 < 250 ? width! * .5 : 250,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image:  AssetImage(image!), fit: BoxFit.fill
-                    )
+            borderRadius: BorderRadius.all(Radius.circular(20)),
+            child: Stack(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5),
+                  child: Container(
+                    height: height! * .137 < 160 ? height! * .137 : 160,
+                    width: width! * .5 < 250 ? width! * .5 : 250,
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage(image!), fit: BoxFit.fill)),
                   ),
                 ),
-              ),
-              Positioned(
-                height: 60,
+                Positioned(
+                  height: 60,
                   width: width! * .5 < 250 ? width! * .5 : 250,
                   left: 5,
                   //right: 0,
@@ -636,25 +630,25 @@ class _City extends StatelessWidget{
                             begin: Alignment.bottomCenter,
                             end: Alignment.topCenter)),
                   ),
-              ),
-              Positioned(
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Container(
-                      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text(
-                            name!,
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white
+                ),
+                Positioned(
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Container(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text(
+                              name!,
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white),
                             ),
-                          ),
                             Text(
                               monthyear!,
                               style: TextStyle(
@@ -662,11 +656,10 @@ class _City extends StatelessWidget{
                                   fontWeight: FontWeight.w400,
                                   color: Colors.white),
                             ),
-                          
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                    Container(
+                      Container(
                         padding:
                             EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                         decoration: BoxDecoration(
@@ -682,18 +675,19 @@ class _City extends StatelessWidget{
                               color: Colors.black),
                         ),
                       )
-                  ],
-                ),
-                left: 10, bottom: 10, right: 15,
-              )
-            ],
-          )
-        ),
+                    ],
+                  ),
+                  left: 10,
+                  bottom: 10,
+                  right: 15,
+                )
+              ],
+            )),
         Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Text(  '${(newprice)}' + "\VNĐ ",
+            Text('${(newprice)}' + "\VNĐ ",
                 style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.w400,
@@ -701,7 +695,7 @@ class _City extends StatelessWidget{
             SizedBox(
               width: width! * 0.08,
             ),
-            Text( '${(oldprice)}' + "\VNĐ " ,
+            Text('${(oldprice)}' + "\VNĐ ",
                 style: TextStyle(
                     color: Colors.black87,
                     fontWeight: FontWeight.bold,
@@ -711,5 +705,4 @@ class _City extends StatelessWidget{
       ],
     );
   }
-
 }
