@@ -33,6 +33,8 @@ class DangKyState extends State<DangKy> {
           centerTitle: true,
         ),
         body: Container(
+          padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
+          constraints: BoxConstraints.expand(),
           alignment: Alignment.center,
           decoration: BoxDecoration(
             image: DecorationImage(image: img_bg, fit: BoxFit.cover),
@@ -40,6 +42,9 @@ class DangKyState extends State<DangKy> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              SizedBox(
+                height: 140,
+              ),
               Padding(
                 padding: EdgeInsets.all(15),
                 child: TextField(
@@ -89,6 +94,20 @@ class DangKyState extends State<DangKy> {
                   ),
                 ),
               ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 20, 0, 40),
+                child: RichText(
+                  text: TextSpan(
+                      text: "Already a User? ",
+                      style: TextStyle(color: Color(0xff606470), fontSize: 16),
+                      children: <TextSpan>[
+                        TextSpan(
+                            text: "Login now",
+                            style: TextStyle(
+                                color: Color(0xff3277D8), fontSize: 16))
+                      ]),
+                ),
+              )
             ],
           ),
         ));

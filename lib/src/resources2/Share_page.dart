@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sbtc_trip/src/resources/login_page.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:sbtc_trip/src/resources2/Share_page.dart';
+import 'package:sbtc_trip/src/resources/screen_main.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -12,19 +11,19 @@ void main() {
 }
 
 ThemeData appTheme =
-    ThemeData(primaryColor: Colors.purple, secondaryHeaderColor: Colors.blue);
+    ThemeData(primaryColor: Colors.blue, secondaryHeaderColor: Colors.yellow);
 int sel = 0;
 double? width;
 double? height;
-final bodies = [detailed_article()];
+final bodies = [Share_page()];
 
-class detailed extends StatefulWidget {
-  detailed({Key? key}) : super(key: key);
+class BottomNav4 extends StatefulWidget {
+  BottomNav4({Key? key}) : super(key: key);
 
-  detailedState createState() => detailedState();
+  _BottomNav4State createState() => _BottomNav4State();
 }
 
-class detailedState extends State<detailed> {
+class _BottomNav4State extends State<BottomNav4> {
   List<BottomNavigationBarItem> createItems() {
     List<BottomNavigationBarItem> items = [];
     items.add(BottomNavigationBarItem(
@@ -36,7 +35,7 @@ class detailedState extends State<detailed> {
           Icons.home,
           color: Colors.black,
         ),
-        label: "Explore"));
+        label: "Màn hình chính"));
     items.add(BottomNavigationBarItem(
         activeIcon: Icon(
           Icons.favorite,
@@ -46,7 +45,7 @@ class detailedState extends State<detailed> {
           Icons.favorite,
           color: Colors.black,
         ),
-        label: "WishList"));
+        label: "Yêu thích"));
     items.add(BottomNavigationBarItem(
         activeIcon: Icon(
           Icons.local_offer,
@@ -66,7 +65,7 @@ class detailedState extends State<detailed> {
           Icons.verified_user_outlined,
           color: Colors.black,
         ),
-        label: "Notifications"));
+        label: "User"));
     return items;
   }
 
@@ -94,42 +93,58 @@ class detailedState extends State<detailed> {
   }
 }
 
-class detailed_article extends StatefulWidget {
+class Share_page extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return detailed_articleState();
+    return Share_pageState();
   }
 }
 
-class detailed_articleState extends State<detailed_article> {
+class Share_pageState extends State<Share_page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.yellow.shade300,
         title: Text(
-          'Chi tiết bài viết',
-          style: TextStyle(fontFamily: "DancingScript"),
+          'Chia Sẽ Bài Viết',
+          style: TextStyle(
+            color: Colors.blue,
+            fontFamily: "DancingScript",
+            fontSize: 30,
+          ),
         ),
         centerTitle: true,
       ),
-      body: Center(
-          child: Column(
-        children: [
-          Text(
-            'Mộng Bờ Tây',
-            style: TextStyle(),
+      body: Container(
+        alignment: Alignment.center,
+        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+          Padding(
+            padding: EdgeInsets.all(15),
+            child: TextField(
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(), labelText: 'Cảm Nghĩ :'),
+            ),
           ),
-        ],
-      )),
-      floatingActionButton: FloatingActionButton(
-        elevation: 0,
-        hoverElevation: 0,
-        onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => Share_page()));
-        },
-        child: Icon(Icons.share),
-        backgroundColor: appTheme.primaryColor.withOpacity(.5),
+          Padding(
+            padding: EdgeInsets.all(15),
+            child: OutlinedButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => BottomNav()));
+              },
+              style: OutlinedButton.styleFrom(
+                elevation: 8,
+                shadowColor: Colors.blue,
+                side: BorderSide(color: Colors.blue),
+              ),
+              child: Text(
+                'Tạo Bài Viết',
+                style: TextStyle(fontSize: 28),
+              ),
+            ),
+          ),
+        ]),
       ),
     );
   }

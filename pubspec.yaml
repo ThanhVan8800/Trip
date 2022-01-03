@@ -81,15 +81,12 @@ flutter:
     - assets/img/vungtau.png
     - assets/img/Kerman.png
     - assets/img/phongnha.png
-<<<<<<< HEAD
     - assets/img/ic_phone.png
     - assets/img/ic_user.png
     - assets/img/ic_mail.png
-=======
     - assets/img/h1.jpg
     - assets/img/h2.jpg
     - assets/img/h3.jpg
->>>>>>> aa925b4541697d2e970a68777f6879065cd36235
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

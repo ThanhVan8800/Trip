@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sbtc_trip/src/resources/login_page.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:sbtc_trip/src/resources2/detailed_article_page.dart';
+import 'package:sbtc_trip/src/resources/screen_main.dart';
+import 'package:sbtc_trip/src/resources2/add_article_page.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -12,19 +12,19 @@ void main() {
 }
 
 ThemeData appTheme =
-    ThemeData(primaryColor: Colors.purple, secondaryHeaderColor: Colors.blue);
+    ThemeData(primaryColor: Colors.blue, secondaryHeaderColor: Colors.yellow);
 int sel = 0;
 double? width;
 double? height;
 final bodies = [Homerecommendation()];
 
-class recommendation extends StatefulWidget {
-  recommendation({Key? key}) : super(key: key);
+class BottomNav2 extends StatefulWidget {
+  BottomNav2({Key? key}) : super(key: key);
 
-  recommendationState createState() => recommendationState();
+  _BottomNav2State createState() => _BottomNav2State();
 }
 
-class recommendationState extends State<recommendation> {
+class _BottomNav2State extends State<BottomNav2> {
   List<BottomNavigationBarItem> createItems() {
     List<BottomNavigationBarItem> items = [];
     items.add(BottomNavigationBarItem(
@@ -36,7 +36,7 @@ class recommendationState extends State<recommendation> {
           Icons.home,
           color: Colors.black,
         ),
-        label: "Explore"));
+        label: "Màn hình chính"));
     items.add(BottomNavigationBarItem(
         activeIcon: Icon(
           Icons.favorite,
@@ -46,7 +46,7 @@ class recommendationState extends State<recommendation> {
           Icons.favorite,
           color: Colors.black,
         ),
-        label: "WishList"));
+        label: "Yêu thích"));
     items.add(BottomNavigationBarItem(
         activeIcon: Icon(
           Icons.local_offer,
@@ -66,7 +66,7 @@ class recommendationState extends State<recommendation> {
           Icons.verified_user_outlined,
           color: Colors.black,
         ),
-        label: "Notifications"));
+        label: "User"));
     return items;
   }
 
@@ -106,10 +106,11 @@ class HomerecommendationState extends State<Homerecommendation> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        shadowColor: Colors.amber,
+        backgroundColor: Colors.yellow.shade300,
         title: Text(
           'Danh Sách Bài Viết',
           style: TextStyle(
+            color: Colors.blue,
             fontFamily: "DancingScript",
           ),
         ),
@@ -409,6 +410,16 @@ class HomerecommendationState extends State<Homerecommendation> {
             ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        elevation: 0,
+        hoverElevation: 0,
+        onPressed: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => Add_page()));
+        },
+        child: Icon(Icons.add_box_outlined),
+        backgroundColor: appTheme.primaryColor.withOpacity(.5),
       ),
     );
   }

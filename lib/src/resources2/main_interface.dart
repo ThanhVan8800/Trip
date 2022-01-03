@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sbtc_trip/src/resources2/registration.dart';
+import 'package:sbtc_trip/src/resources/register.dart';
 import 'package:sbtc_trip/src/resources/login_page.dart';
-import 'package:cached_network_image_web/cached_network_image_web.dart';
 
 class GiaoDien1 extends StatefulWidget {
   const GiaoDien1({Key? key}) : super(key: key);
@@ -32,6 +31,8 @@ class GiaoDien1State extends State<GiaoDien1> {
           centerTitle: true,
         ),
         body: Container(
+          padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
+          constraints: BoxConstraints.expand(),
           alignment: Alignment.center,
           decoration: BoxDecoration(
             image: DecorationImage(image: img_bg, fit: BoxFit.cover),
@@ -39,8 +40,11 @@ class GiaoDien1State extends State<GiaoDien1> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              SizedBox(
+                height: 140,
+              ),
               Padding(
-                padding: EdgeInsets.all(15),
+                padding: const EdgeInsets.fromLTRB(0, 120, 0, 20),
                 child: OutlinedButton(
                   onPressed: () {
                     Navigator.push(context,
@@ -65,7 +69,7 @@ class GiaoDien1State extends State<GiaoDien1> {
                 child: OutlinedButton(
                   onPressed: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => DangKy()));
+                        MaterialPageRoute(builder: (context) => Register()));
                   },
                   style: OutlinedButton.styleFrom(
                     elevation: 8,
