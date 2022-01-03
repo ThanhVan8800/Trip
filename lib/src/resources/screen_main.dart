@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sbtc_trip/src/resources/login_page.dart';
 import 'package:url_launcher/url_launcher.dart';
-
+import 'package:sbtc_trip/src/resources/personal_page.dart';
 void main(){
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
@@ -13,13 +13,13 @@ void main(){
 
 
 ThemeData appTheme = ThemeData(
-    primaryColor: Colors.purple,
-    secondaryHeaderColor: Colors.blue
+    primaryColor: Colors.blue,
+    secondaryHeaderColor: Colors.yellow
 );
 int sel = 0;
 double? width;
 double? height;
-final bodies = [HomeScreen()];
+final bodies = [HomeScreen(),PersonalPage()];
 
 
 
@@ -40,7 +40,7 @@ class _BottomNavState extends State<BottomNav> {
           Icons.home,
           color: Colors.black,
         ),
-        label: "Explore"));
+        label: "Màn hình chính"));
     items.add(BottomNavigationBarItem(
         activeIcon: Icon(
           Icons.favorite,
@@ -50,7 +50,7 @@ class _BottomNavState extends State<BottomNav> {
           Icons.favorite,
           color: Colors.black,
         ),
-        label: "WishList"));
+        label: "Yêu thích"));
     items.add(BottomNavigationBarItem(
         activeIcon: Icon(
           Icons.local_offer,
@@ -70,7 +70,7 @@ class _BottomNavState extends State<BottomNav> {
           Icons.verified_user_outlined,
           color: Colors.black,
         ),
-        label: "Notifications"));
+        label: "User"));
     return items;
   }
 
@@ -179,6 +179,28 @@ class HomeScreen extends StatelessWidget{
                               child: Image.asset('assets/img/instagram.png'),
                               onPressed: () async{
                                 const url = 'https://www.instagram.com/vthanh.25/';
+                                if (await canLaunch(url)) {
+                                  await launch(url);
+                                } else {
+                                  throw 'Could not launch $url';
+                                }
+                              },
+                            ),
+                          ),
+                        ),
+                        FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: SizedBox(
+                            height: h,
+                            width: w,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                shape: StadiumBorder(),
+                                onPrimary: Colors.white,
+                              ),
+                              child: Image.asset('assets/img/fb.png'),
+                              onPressed: () async{
+                                const url = 'https://www.facebook.com/ThanhVan.Hin/';
                                 if (await canLaunch(url)) {
                                   await launch(url);
                                 } else {
