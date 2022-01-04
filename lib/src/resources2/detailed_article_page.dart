@@ -106,9 +106,10 @@ class detailed_articleState extends State<detailed_article> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.yellow.shade300,
         title: Text(
           'Chi tiết bài viết',
-          style: TextStyle(fontFamily: "DancingScript"),
+          style: TextStyle(fontFamily: "DancingScript", color: Colors.blue),
         ),
         centerTitle: true,
       ),

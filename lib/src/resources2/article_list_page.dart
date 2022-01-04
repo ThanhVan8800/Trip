@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sbtc_trip/src/resources2/detailed_article_page.dart';
 import 'package:sbtc_trip/src/resources/screen_main.dart';
-import 'package:sbtc_trip/src/resources2/add_article_page.dart';
+import 'package:sbtc_trip/src/resources2/upload_page.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -416,7 +416,7 @@ class HomerecommendationState extends State<Homerecommendation> {
         hoverElevation: 0,
         onPressed: () {
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => Add_page()));
+              context, MaterialPageRoute(builder: (context) => upload()));
         },
         child: Icon(Icons.add_box_outlined),
         backgroundColor: appTheme.primaryColor.withOpacity(.5),

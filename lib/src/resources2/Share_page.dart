@@ -139,7 +139,7 @@ class Share_pageState extends State<Share_page> {
                 side: BorderSide(color: Colors.blue),
               ),
               child: Text(
-                'Tạo Bài Viết',
+                'Chia Sẽ Bài Viết',
                 style: TextStyle(fontSize: 28),
               ),
             ),
