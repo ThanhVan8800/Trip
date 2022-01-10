@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:sbtc_trip/src/resources/login_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:sbtc_trip/src/resources/personal_page.dart';
 import 'package:sbtc_trip/src/resources2/recommen_page.dart';
 import 'package:sbtc_trip/src/resources2/article_list_page.dart';
-void main(){
+
+void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     theme: appTheme,
@@ -12,15 +12,12 @@ void main(){
   ));
 }
 
-
-ThemeData appTheme = ThemeData(
-    primaryColor: Colors.blue,
-    secondaryHeaderColor: Colors.yellow
-);
+ThemeData appTheme =
+    ThemeData(primaryColor: Colors.blue, secondaryHeaderColor: Colors.yellow);
 int sel = 0;
 double? width;
 double? height;
-final bodies = [HomeScreen(),PersonalPage()];
+final bodies = [HomeScreen(), PersonalPage()];
 
 class BottomNav extends StatefulWidget {
   BottomNav({Key? key}) : super(key: key);
@@ -197,8 +194,9 @@ class HomeScreen extends StatelessWidget {
                                 onPrimary: Colors.white,
                               ),
                               child: Image.asset('assets/img/fb.png'),
-                              onPressed: () async{
-                                const url = 'https://www.facebook.com/ThanhVan.Hin/';
+                              onPressed: () async {
+                                const url =
+                                    'https://www.facebook.com/ThanhVan.Hin/';
                                 if (await canLaunch(url)) {
                                   await launch(url);
                                 } else {
@@ -388,7 +386,7 @@ class _HomeTop extends State<HomeTop> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => recommendation()));
+                                builder: (context) => BottomNav2()));
                       },
                     ),
                     SizedBox(

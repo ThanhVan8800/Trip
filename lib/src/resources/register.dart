@@ -16,7 +16,6 @@ import 'package:sbtc_trip/src/services/globals.dart';
 class Register extends StatefulWidget{
   @override
   State<StatefulWidget> createState() => _Register();
-
 }
 class _Register extends State<Register>{
   String _name = '';
@@ -100,7 +99,7 @@ class _Register extends State<Register>{
                 ),
                 onTap: (){
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (BuildContext context) => const LoginPage())
+                      MaterialPageRoute(builder: (BuildContext context) =>  LoginPage())
                    );
                 },
             ),

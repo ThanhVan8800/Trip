@@ -22,6 +22,7 @@ class recommenState extends State<recommen> {
     precacheImage(img_bg, context);
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.yellow.shade300,
           title: Text(
             'Đề Xuất Địa Danh Mới',
             style: TextStyle(

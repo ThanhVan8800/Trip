@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sbtc_trip/src/resources/login_page.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:sbtc_trip/src/resources2/Share_page.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -105,9 +106,10 @@ class detailed_articleState extends State<detailed_article> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.yellow.shade300,
         title: Text(
           'Chi tiết bài viết',
-          style: TextStyle(fontFamily: "DancingScript"),
+          style: TextStyle(fontFamily: "DancingScript", color: Colors.blue),
         ),
         centerTitle: true,
       ),
@@ -120,6 +122,16 @@ class detailed_articleState extends State<detailed_article> {
           ),
         ],
       )),
+      floatingActionButton: FloatingActionButton(
+        elevation: 0,
+        hoverElevation: 0,
+        onPressed: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => Share_page()));
+        },
+        child: Icon(Icons.share),
+        backgroundColor: appTheme.primaryColor.withOpacity(.5),
+      ),
     );
   }
 }

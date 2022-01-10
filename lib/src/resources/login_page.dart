@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:sbtc_trip/src/resources/register.dart';
 import 'package:sbtc_trip/src/resources/screen_main.dart';
 import 'package:http/http.dart' as http;
 import 'package:sbtc_trip/src/services/auth_services.dart';
@@ -10,7 +11,6 @@ import 'package:sbtc_trip/src/resources/register.dart';
 
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
   @override
   State<StatefulWidget> createState() => _LoginPageState();
 }
