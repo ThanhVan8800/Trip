@@ -3,7 +3,6 @@ import 'package:sbtc_trip/src/resources/login_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:sbtc_trip/src/resources/personal_page.dart';
 import 'package:sbtc_trip/src/resources2/recommen_page.dart';
-import 'package:sbtc_trip/src/resources2/registration.dart';
 import 'package:sbtc_trip/src/resources2/article_list_page.dart';
 void main(){
   runApp(MaterialApp(
@@ -64,11 +63,11 @@ class _BottomNavState extends State<BottomNav> {
         label: "Deals"));
     items.add(BottomNavigationBarItem(
         activeIcon: Icon(
-          Icons.notifications,
+          Icons.person_outline,
           color: appTheme.primaryColor,
         ),
         icon: Icon(
-          Icons.verified_user_outlined,
+          Icons.person_outline,
           color: Colors.black,
         ),
         label: "User"));
@@ -383,7 +382,7 @@ class _HomeTop extends State<HomeTop> {
                     InkWell(
                       child: Choice88(
                           icon: Icons.flight_takeoff,
-                          text: "Danh Sach Bai Viet",
+                          text: "Danh sách bài viết",
                           selected: isFlightselected),
                       onTap: () {
                         Navigator.push(
@@ -410,17 +409,17 @@ class _HomeTop extends State<HomeTop> {
                     SizedBox(
                       width: width! * 0.055,
                     ),
-                    InkWell(
-                      child: Choice88(
-                          icon: Icons.restaurant_menu_outlined,
-                          text: "Nhà hàng",
-                          selected: isFlightselected),
-                      onTap: () {
-                        setState(() {
-                          //isFlightselected = false;
-                        });
-                      },
-                    )
+                    // InkWell(
+                    //   child: Choice88(
+                    //       icon: Icons.restaurant_menu_outlined,
+                    //       text: "Nhà hàng",
+                    //       selected: isFlightselected),
+                    //   onTap: () {
+                    //     setState(() {
+                    //       //isFlightselected = false;
+                    //     });
+                    //   },
+                    // )
                   ],
                 ),
                 SizedBox(height: height! * 0.0375),
