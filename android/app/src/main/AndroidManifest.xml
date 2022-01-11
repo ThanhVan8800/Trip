@@ -3,6 +3,7 @@
    <application
         android:label="sbtc_trip"
         android:icon="@mipmap/ic_launcher">
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyBKEbxu1TpyVgw6ZgncDkjy1Cy-bEM6Ch4"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
@@ -18,6 +19,7 @@
               android:name="io.flutter.embedding.android.NormalTheme"
               android:resource="@style/NormalTheme"
               />
+              
             <!-- Displays an Android View that continues showing the launch screen
                  Drawable until Flutter paints its first frame, then this splash
                  screen fades out. A splash screen is useful to avoid any visual
