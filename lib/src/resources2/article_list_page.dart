@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:sbtc_trip/src/resources2/detailed_article_page.dart';
 import 'package:sbtc_trip/src/resources/screen_main.dart';
 import 'package:sbtc_trip/src/resources2/upload_page.dart';
+import 'package:sbtc_trip/src/services/Loadpost_Object.dart';
+import 'package:sbtc_trip/src/services/Loadpost_Provider.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -102,6 +104,19 @@ class Homerecommendation extends StatefulWidget {
 }
 
 class HomerecommendationState extends State<Homerecommendation> {
+  List<LoadPostObject> lsPost = [];
+  void _Loadbaiviet() async {
+    final data = await LoadPostProvider.getAllLoadPost();
+    setState(() {});
+    lsPost = data;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _Loadbaiviet();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -117,298 +132,44 @@ class HomerecommendationState extends State<Homerecommendation> {
         centerTitle: true,
       ),
       body: Container(
-        child: ListView(
-          children: [
-            Card(
-              child: ListTile(
-                leading: Image.asset(
-                  'assets/img/vungtau.png',
-                  fit: BoxFit.fill,
-                  width: 200,
-                ),
-                title: OutlinedButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => detailed()));
-                  },
-                  child: Text(
-                    'Mộng Bờ Tây :))',
-                    style: TextStyle(
-                      color: Colors.blue,
-                    ),
-                    textAlign: TextAlign.center,
+        child: ListView.builder(
+          itemCount: lsPost.length,
+          itemBuilder: (context, index) => Card(
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+            color: Colors.grey.shade300,
+            child: Column(
+              children: [
+                ListTile(
+                  leading: Image.asset(
+                    'assets/img/vungtau.png',
+                    fit: BoxFit.fill,
+                    width: 200,
                   ),
-                  style: ButtonStyle(
-                    shape: MaterialStateProperty.all(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50),
+                  title: OutlinedButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => detailed()));
+                    },
+                    child: Text(
+                      ('avc'),
+                      style: TextStyle(
+                        color: Colors.blue,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    style: ButtonStyle(
+                      shape: MaterialStateProperty.all(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50),
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
+              ],
             ),
-            Card(
-              child: ListTile(
-                leading: Image.asset(
-                  'assets/img/phongnha.png',
-                  fit: BoxFit.fill,
-                  width: 200,
-                ),
-                title: OutlinedButton(
-                  onPressed: () {},
-                  child: Text(
-                    'Động Phong Nha',
-                    style: TextStyle(
-                      color: Colors.blue,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                  style: ButtonStyle(
-                    shape: MaterialStateProperty.all(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Card(
-              child: ListTile(
-                leading: Image.asset(
-                  'assets/img/Kerman.png',
-                  fit: BoxFit.fill,
-                  width: 200,
-                ),
-                title: OutlinedButton(
-                  onPressed: () {},
-                  child: Text(
-                    'Kim Tử Tháp',
-                    style: TextStyle(
-                      color: Colors.blue,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                  style: ButtonStyle(
-                    shape: MaterialStateProperty.all(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Card(
-              child: ListTile(
-                leading: Image.asset(
-                  'assets/img/phongnha.png',
-                  fit: BoxFit.fill,
-                  width: 200,
-                ),
-                title: OutlinedButton(
-                  onPressed: () {},
-                  child: Text(
-                    'Mộng Bờ Tây :))',
-                    style: TextStyle(
-                      color: Colors.blue,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                  style: ButtonStyle(
-                    shape: MaterialStateProperty.all(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Card(
-              child: ListTile(
-                leading: Image.asset(
-                  'assets/img/vungtau.png',
-                  fit: BoxFit.fill,
-                  width: 200,
-                ),
-                title: OutlinedButton(
-                  onPressed: () {},
-                  child: Text(
-                    'Mộng Bờ Tây :))',
-                    style: TextStyle(
-                      color: Colors.blue,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                  style: ButtonStyle(
-                    shape: MaterialStateProperty.all(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Card(
-              child: ListTile(
-                leading: Image.asset(
-                  'assets/img/phongnha.png',
-                  fit: BoxFit.fill,
-                  width: 200,
-                ),
-                title: OutlinedButton(
-                  onPressed: () {},
-                  child: Text(
-                    'Mộng Bờ Tây :))',
-                    style: TextStyle(
-                      color: Colors.blue,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                  style: ButtonStyle(
-                    shape: MaterialStateProperty.all(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Card(
-              child: ListTile(
-                leading: Image.asset(
-                  'assets/img/vungtau.png',
-                  fit: BoxFit.fill,
-                  width: 200,
-                ),
-                title: OutlinedButton(
-                  onPressed: () {},
-                  child: Text(
-                    'Mộng Bờ Tây :))',
-                    style: TextStyle(
-                      color: Colors.blue,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                  style: ButtonStyle(
-                    shape: MaterialStateProperty.all(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Card(
-              child: ListTile(
-                leading: Image.asset(
-                  'assets/img/phongnha.png',
-                  fit: BoxFit.fill,
-                  width: 200,
-                ),
-                title: OutlinedButton(
-                  onPressed: () {},
-                  child: Text(
-                    'Mộng Bờ Tây :))',
-                    style: TextStyle(
-                      color: Colors.blue,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                  style: ButtonStyle(
-                    shape: MaterialStateProperty.all(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Card(
-              child: ListTile(
-                leading: Image.asset(
-                  'assets/img/vungtau.png',
-                  fit: BoxFit.fill,
-                  width: 200,
-                ),
-                title: OutlinedButton(
-                  onPressed: () {},
-                  child: Text(
-                    'Mộng Bờ Tây :))',
-                    style: TextStyle(
-                      color: Colors.blue,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                  style: ButtonStyle(
-                    shape: MaterialStateProperty.all(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Card(
-              child: ListTile(
-                leading: Image.asset(
-                  'assets/img/phongnha.png',
-                  fit: BoxFit.fill,
-                  width: 200,
-                ),
-                title: OutlinedButton(
-                  onPressed: () {},
-                  child: Text(
-                    'Mộng Bờ Tây :))',
-                    style: TextStyle(
-                      color: Colors.blue,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                  style: ButtonStyle(
-                    shape: MaterialStateProperty.all(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Card(
-              child: ListTile(
-                leading: Image.asset(
-                  'assets/img/vungtau.png',
-                  fit: BoxFit.fill,
-                  width: 200,
-                ),
-                title: OutlinedButton(
-                  onPressed: () {},
-                  child: Text(
-                    'Mộng Bờ Tây :))',
-                    style: TextStyle(
-                      color: Colors.blue,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                  style: ButtonStyle(
-                    shape: MaterialStateProperty.all(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ],
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
