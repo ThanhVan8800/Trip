@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sbtc_trip/src/resources/screen_main.dart';
-import 'package:cached_network_image_web/cached_network_image_web.dart';
+//import 'package:cached_network_image_web/cached_network_image_web.dart';
 
 class recommen extends StatefulWidget {
   const recommen({Key? key}) : super(key: key);

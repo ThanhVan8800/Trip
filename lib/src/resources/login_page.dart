@@ -23,7 +23,7 @@ class _LoginPageState extends State<LoginPage> {
       http.Response response = await AuthServices.login(_email,_password);
       Map responseMap = jsonDecode(response.body);
       if(response.statusCode==200){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>BottomNav()));
             }
             else{
                 errorSnackBar(context,responseMap.values.first);
@@ -59,6 +59,7 @@ class _LoginPageState extends State<LoginPage> {
                         //  stream:,
                         builder: (context, snapshot)=>
                         TextField(
+                          keyboardType: TextInputType.emailAddress,
                           
                           style: TextStyle(fontSize: 18, color: Colors.black),
                           decoration: InputDecoration(
@@ -102,56 +103,76 @@ class _LoginPageState extends State<LoginPage> {
             ),
             Padding(
               padding: EdgeInsets.all(15),
-              child: OutlinedButton(
+              child: TextButton(
                 onPressed: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => loginPressed()));
                 },
-                style: ButtonStyle(
-                    shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)))),
-                child: Text('Đăng nhập',
-                  style: TextStyle(color: Colors.yellow),
+                // style: ButtonStyle(
+                //     shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                //         borderRadius: BorderRadius.circular(20)))),
+                child: Text('Đăng nhập', style: TextStyle(color: Colors.blue),),
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateColor.resolveWith((states) => Colors.white),
+                    padding: MaterialStateProperty.resolveWith((states) => EdgeInsets.symmetric(vertical: 10))
+                  ),
                   
                 ),
                 
               ),
-            ),
-            Padding(
-                padding:EdgeInsets.all(15) ,//tạo khoảng cách nội dung với cái gì đó
-                child:Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    TextButton(
-                      onPressed: (){
-                        // Navigator.push(context,
-                        //     MaterialPageRoute(builder: (context)=> const ForgetPassword(),
-                        //     ),
-                        // );
-                      },
-                      child:Text(
-                        'Quên mật khẩu?',
-                        style: TextStyle(
-                          color: Colors.blue,
-                          decoration: TextDecoration.underline
-                        ),
-                      ),
-                    ),
-                    TextButton(onPressed: (){
-                      Navigator.push(context,
+           // ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text('Bạn chưa có mật khẩu? '),
+                GestureDetector(
+                  child: Text('Đăng ký', style: TextStyle(color: Colors.blue),),
+                  onTap: (){
+                    Navigator.push(context,
                       MaterialPageRoute(
                         builder: (context)=>  Register(),
                       ),
                       );
-                    },
-                        child: Text('Đăng ký',
-                        style: TextStyle(color: Colors.blue,
-                        decoration: TextDecoration.underline),
-                        ),
-                    ),
-                  ],
-                ), 
-                ),
+                  },
+                )
+              ],
+            ),
+            
+            // Padding(
+            //     padding:EdgeInsets.all(15) ,//tạo khoảng cách nội dung với cái gì đó
+            //     child:Row(
+            //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //       children: [
+            //         TextButton(
+            //           onPressed: (){
+            //             // Navigator.push(context,
+            //             //     MaterialPageRoute(builder: (context)=> const ForgetPassword(),
+            //             //     ),
+            //             // );
+            //           },
+            //           child:Text(
+            //             'Quên mật khẩu?',
+            //             style: TextStyle(
+            //               color: Colors.blue,
+            //               decoration: TextDecoration.underline
+            //             ),
+            //           ),
+            //         ),
+            //         TextButton(onPressed: (){
+            //           Navigator.push(context,
+            //           MaterialPageRoute(
+            //             builder: (context)=>  Register(),
+            //           ),
+            //           );
+            //         },
+            //             child: Text('Đăng ký',
+            //             style: TextStyle(color: Colors.blue,
+            //             decoration: TextDecoration.underline),
+            //             ),
+            //         ),
+            //       ],
+            //     ), 
+            //     ),
           ],
         ),
       ),

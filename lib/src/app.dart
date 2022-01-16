@@ -1,4 +1,5 @@
-import 'dart:html';
+// ignore: avoid_web_libraries_in_flutter
+ //import 'dart:html';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: upload(),
+      home: LoginPage(),
     );
   }
 }

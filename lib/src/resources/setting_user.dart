@@ -3,7 +3,8 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:sbtc_trip/src/services/user_services.dart';
+import 'login_page.dart';
 class SettingUser extends StatefulWidget{
   const SettingUser({Key?key}): super(key: key);
   @override
@@ -19,7 +20,18 @@ class _SettingUser extends State<SettingUser>{
     return Scaffold(
           appBar: AppBar(
         title: Text('Thay đổi'),  
-        backgroundColor: Colors.yellow.shade700       
+        backgroundColor: Colors.yellow.shade700,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.exit_to_app),
+            onPressed: (){
+              logout().then((value) => {
+                Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(builder: (context)=>LoginPage()), (route) => false)
+              });
+            },
+          )
+        ],       
         ),
         body:Column(
           children: [
@@ -70,7 +82,26 @@ class _SettingUser extends State<SettingUser>{
                   
                 ],
             ),
-            
+            Row(
+                children: [
+                  
+                  TextButton(
+                  style: TextButton.styleFrom(
+                    padding: const EdgeInsets.all(16.0),
+                    primary: Colors.blue,
+                    textStyle: const TextStyle(fontSize: 15),
+                  ),
+                  onPressed: () {
+                    logout().then((value) => {
+                    Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(builder: (context)=>LoginPage()), (route) => false)
+                  });
+                  },
+                  child: const Text('Đăng xuất'),
+                ),
+                  
+                ],
+            ),
            
              
             

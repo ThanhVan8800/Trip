@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
+// import 'package:path/path.dart';
+import 'package:sbtc_trip/constant.dart';
+import 'package:sbtc_trip/src/models/api_response.dart';
+// import 'package:path/path.dart';
+import 'package:sbtc_trip/src/resources/login_page.dart';
+import 'package:sbtc_trip/src/services/user_services.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:sbtc_trip/src/resources/personal_page.dart';
 import 'package:sbtc_trip/src/resources2/recommen_page.dart';
 import 'package:sbtc_trip/src/resources2/article_list_page.dart';
+import 'package:sbtc_trip/src/services/user_services.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -11,6 +18,7 @@ void main() {
     title: "Màn hình chính",
   ));
 }
+
 
 ThemeData appTheme =
     ThemeData(primaryColor: Colors.blue, secondaryHeaderColor: Colors.yellow);
@@ -23,9 +31,32 @@ class BottomNav extends StatefulWidget {
   BottomNav({Key? key}) : super(key: key);
 
   _BottomNavState createState() => _BottomNavState();
+
 }
 
 class _BottomNavState extends State<BottomNav> {
+  void _loadUserInfo() async{
+  String token =await getToken();
+  if(token == ''){
+    Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context)=>LoginPage()), (route) => false);
+  }
+  else{
+    ApiResponse response = await getUserDetail();
+      if(response.error == null){
+        Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context)=>HomeScreen()), (route) => false);
+
+      }
+      else if(response.error == unauthorized){
+        Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context)=>LoginPage()), (route) => false);
+      }
+      else{
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content:Text('${response.error}'),
+        ));
+      }
+      
+  }
+}
   List<BottomNavigationBarItem> createItems() {
     List<BottomNavigationBarItem> items = [];
     items.add(BottomNavigationBarItem(

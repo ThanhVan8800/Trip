@@ -6,6 +6,8 @@ import 'package:sbtc_trip/src/resources/posts_tab.dart';
 import 'package:sbtc_trip/src/resources/setting_user.dart';
 import 'package:sbtc_trip/src/resources/information_tab.dart';
 
+import 'create_post.dart';
+
 class PersonalPage extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {
@@ -34,6 +36,12 @@ class _PersonalPage extends State<PersonalPage> with SingleTickerProviderStateMi
           length: 3,
           initialIndex: 0,
           child: Scaffold(
+            floatingActionButton: FloatingActionButton(
+              onPressed: (){
+                Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Post()));
+              },
+              child: Icon(Icons.add),
+            ),
               appBar: AppBar(
                 backgroundColor: Colors.yellow.shade300,
                 title: 

@@ -31,7 +31,7 @@ class _Register extends State<Register>{
                 await AuthServices.register(_name, _email, _password);
             Map responseMap = jsonDecode(response.body);
             if(response.statusCode==200){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>BottomNav()));
             }
             else{
                 errorSnackBar(context,responseMap.values.first[0]);
@@ -46,7 +46,7 @@ class _Register extends State<Register>{
    // Widget image = Image.asset('img/fb.png',height: 120,width: 155, fit: BoxFit.cover,);
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.black,
+          backgroundColor: Colors.blue,
           centerTitle: true,
           elevation: 0,
           title: Text(
@@ -91,8 +91,9 @@ class _Register extends State<Register>{
                 btnText: 'Create Account',
                    onBtnPressed: ()=> createAccount(),
               ),
+              SizedBox(height: 10,),
               GestureDetector(
-                child: Text('already have an account',
+                child: Text('Already have an account',
                   style: TextStyle(
                     decoration: TextDecoration.underline
                   ),
